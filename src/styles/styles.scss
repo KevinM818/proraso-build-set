@@ -1,0 +1,70 @@
+$heading-color: #333333;
+$text-color: #000000;
+$text-inactive-color: #CBCBCB;
+$button-color: #C69F51;
+$button-inactive-color: #D8D8D8;
+
+@font-face {
+	font-family: 'DINCondensed';
+	src: url('../assets/DINCondensedWeb.ttf');
+}
+@font-face {
+	font-family: 'AdobeItalic';
+	src: url('../assets/Adobe-Garamond-Pro-Italic.ttf');
+}
+
+#BuildASet {
+	h1,h3 {
+		font-family: 'DINCondensed';
+		font-size: 36px;
+		font-weight: normal;
+		text-transform: uppercase;
+		color: $heading-color;
+		margin: 0;
+	}
+	p,span {
+		font-family: 'AdobeItalic';
+		font-size: 18px;
+		font-weight: normal;
+		color: $text-color;
+		margin: 0;
+	}
+	.componentContainer {
+		width: 100%;
+		max-width: 1020px;
+		margin: 0 auto;
+		h1, .headerText { text-align: center; }
+		.headerText {
+			width: 80%;
+			margin: 20px auto 30px;
+			color: $heading-color;
+		}
+	}
+	.Scents {
+		display: flex;
+		flex-flow: row wrap;
+		&__scent {
+			display: flex;
+			align-items: center;
+			width: 50%;
+			cursor: pointer;
+			.addRemoveIcons {
+				padding: 0 20px 0 32px;
+			}
+			.iconWrap {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 30px;
+				width: 30px;
+			}
+			.removeIcon { display: none; }
+			.imgIcon { display: inline-flex; }
+			.scentInfo {
+				padding: 30px 0 47px 25px;
+				h3 { margin-bottom: 12px; }
+				p { width: 84%; }
+			}
+		}
+	}
+}
