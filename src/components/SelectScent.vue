@@ -4,7 +4,7 @@
 		<p class="headerText">{{ headerText.text }}</p>
 		<div class="componentInnerContainer">
 			<div class="Scents">
-				<div class="Scents__scent" v-for="scent in scentText" @click="addScent(scent.heading)">
+				<div class="Scents__scent" v-for="scent in scentText" @click="addScent(scent.heading)" :class="selectedScents.length === 2 && selectedScents.indexOf(scent.heading) === -1 ? 'inactive' : selectedScents.indexOf(scent.heading) !== -1 ? `selected selected-${scent.heading}` : '' ">
 					<div class="addRemoveIcons">
 						<div class="addIcon iconWrap">
 							<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,14 +25,38 @@
 				</div>
 			</div>
 		</div>
+		<div class="navigationButtons">
+			<button class="buttonPrev buttonPrevDisabled buildBtn" disabled>
+				previous
+				<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M10 1L2 10.0667L10 18" stroke="#333333" stroke-width="2"/>
+				</svg>
+			</button>
+			<PageBar></PageBar>
+			<button class="buttonNext buildBtn" @click="$store.commit('setComponent','SelectPreShave')" :disabled="selectedScents.length < 2">
+				next
+				<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M1 1L9 10.0667L1 18" stroke="white" stroke-width="2"/>
+				</svg>
+			</button>
+		</div>
 	</div>
 </template>
 
 <script type="text/javascript">
+import PageBar from './PageBar.vue'
 	export default {
+		components: {
+			PageBar
+		},
+		data() {
+			return {
+				selectedScents: []
+			};
+		},
 		computed: {
 			headerText() {
-				return this.$store.getters.getLanguages.steps[0] || '';
+				return this.$store.getters.getLanguages.steps[0];
 			},
 			scentText() {
 				return this.$store.getters.getLanguages.scents;
@@ -40,7 +64,13 @@
 		},
 		methods: {
 			addScent(scent) {
-				console.log(scent);
+				if (this.selectedScents.indexOf(scent) !== -1) {
+					return this.selectedScents.splice(this.selectedScents.indexOf(scent), 1);
+				} 
+				if (this.selectedScents.length < 2) {
+					this.selectedScents.push(scent);
+				}
+				this.$store.commit('setActiveScents', this.selectedScents);
 			}
 		}
 	}

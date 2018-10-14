@@ -1,17 +1,24 @@
 <template>
-  <div id="BuildASet" v-if="getLoaded">
-    <keep-alive>
-      <component :is="activeComponent"></component>
-    </keep-alive>
+  <div id="BuildASet">
+    <div v-if="getLoaded">
+      <keep-alive>
+        <component :is="activeComponent"></component>
+      </keep-alive>
+    </div>
+    <div v-else>
+      <h1>spinner</h1>
+    </div>
   </div>
 </template>
 
 <script>
 import SelectScent from './components/SelectScent.vue'
+import SelectPreShave from './components/SelectPreShave.vue'
 
 export default {
   components: {
-    SelectScent
+    SelectScent,
+    SelectPreShave
   },
   computed: {
     getLoaded() {
@@ -19,22 +26,7 @@ export default {
     },
     activeComponent() {
       return this.$store.getters.getActiveComponent;
-    },
-    getLang() {
-      return this.$store.state.languages;
-
     }
   }
 }
 </script>
-
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

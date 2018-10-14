@@ -1,9 +1,15 @@
 let mutations = {
+	setComponent(state, payload) {
+		state.activeComponent = payload;
+	},
 	setLanguages(state, payload) {
 		state.languages = payload;
 	},
 	setScents(state, payload) {
 		state.allScents = payload;
+	},
+	setActiveScents(state, payload) {
+		state.activeScents = payload;
 	},
 	sortProducts(state, payload) {
 		if (payload.product_type == 'Set') {

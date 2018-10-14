@@ -7,6 +7,12 @@ let getters = {
 	},
 	getLanguages(state) {
 		return state.languages;
+	},
+	getActiveScents(state) {
+		return state.activeScents;
+	},
+	getSelectedPreshave(state) {
+		return state.selectedPreShave;
 	}
 };
 

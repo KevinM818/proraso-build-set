@@ -17,9 +17,9 @@ export default new Vuex.Store({
     afterShaveProducts: [],
     mainProductId: 0,
     activeScents: [],
-    selectedPreShave: {},
-    selectedShave: {},
-    selectedAfterShave: {}
+    selectedPreShave: '',
+    selectedShave: '',
+    selectedAfterShave: ''
   },
   getters,
   mutations,
