@@ -4,11 +4,11 @@
 		<p class="headerText">{{ headerText.text }}</p>
 		<div class="componentInnerContainer">
 			<div class="Products">
-				<div class="Products__product" v-for="product in preShaveProducts">
+				<div class="Products__product" v-for="product in afterShaveProducts">
 					<img :src="product.image">
 					<h4>{{ product.title }}</h4>
 					<span>${{ product.price }}</span>
-					<button @click="selectPreShave(product)" :class="$store.getters.getSelectedPreshave === product ? 'addedProd' : '' ">
+					<button @click="selectAfterShave(product)" :class="$store.getters.getSelectedAfterShave === product ? 'addedProd' : '' ">
 						<span class="addBtn">Add</span>
 						<span class="addedBtn">Added</span>
 						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,14 +19,14 @@
 			</div>
 		</div>
 		<div class="navigationButtons">
-			<button class="buttonPrev buildBtn" @click="$store.commit('setComponent','SelectScent')">
+			<button class="buttonPrev buildBtn" @click="$store.commit('setComponent','SelectShave')">
 				previous
 				<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M10 1L2 10.0667L10 18" stroke="#333333" stroke-width="2"/>
 				</svg>
 			</button>
 			<PageBar></PageBar>
-			<button class="buttonNext buildBtn" @click="$store.commit('setComponent','SelectShave')" :disabled="$store.getters.getSelectedPreshave === '' ">
+			<button class="buttonNext buildBtn" @click="$store.commit('setComponent','')" :disabled="$store.getters.getSelectedAfterShave === '' ">
 				next
 				<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M1 1L9 10.0667L1 18" stroke="white" stroke-width="2"/>
@@ -44,18 +44,18 @@ import PageBar from './PageBar.vue'
 		},
 		computed: {
 			headerText() {
-				return this.$store.getters.getLanguages.steps[1];
+				return this.$store.getters.getLanguages.steps[2];
 			},
-			preShaveProducts() {
-				return this.$store.getters.getPreShaveProducts;
+			afterShaveProducts() {
+				return this.$store.getters.getAfterShaveProducts;
 			}
 		}, 
 		methods: {
-			selectPreShave(product) {
-				if (this.$store.getters.getSelectedPreshave === product) {
-					return this.$store.commit('setSelectedPreShave', '');
+			selectAfterShave(product) {
+				if (this.$store.getters.getSelectedAfterShave === product) {
+					return this.$store.commit('setSelectedAfterShave', '');
 				}
-				this.$store.commit('setSelectedPreShave', product);
+				this.$store.commit('setSelectedAfterShave', product);
 			}
 		}
 	}

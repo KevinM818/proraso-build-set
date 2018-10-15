@@ -13,6 +13,21 @@ let getters = {
 	},
 	getSelectedPreshave(state) {
 		return state.selectedPreShave;
+	},
+	getSelectedShave(state) {
+		return state.selectedShave;
+	},
+	getSelectedAfterShave(state) {
+		return state.selectedAfterShave;
+	},
+	getPreShaveProducts(state) {
+		return state.preShaveProducts.filter(product => -1 !== state.activeScents.indexOf(product.scent));
+	},
+	getShaveProducts(state) {
+		return state.shaveProducts.filter(product => -1 !== state.activeScents.indexOf(product.scent));
+	},
+	getAfterShaveProducts(state) {
+		return state.afterShaveProducts.filter(product => -1 !== state.activeScents.indexOf(product.scent));
 	}
 };
 

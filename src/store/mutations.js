@@ -11,6 +11,15 @@ let mutations = {
 	setActiveScents(state, payload) {
 		state.activeScents = payload;
 	},
+	setSelectedPreShave(state, payload) {
+		state.selectedPreShave = payload;
+	},
+	setSelectedShave(state, payload) {
+		state.selectedShave = payload;
+	},
+	setSelectedAfterShave(state, payload) {
+		state.selectedAfterShave = payload;
+	},
 	sortProducts(state, payload) {
 		if (payload.product_type == 'Set') {
 			return state.mainProductId = payload.variants[0].id;

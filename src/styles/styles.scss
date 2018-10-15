@@ -3,6 +3,7 @@ $text-color: #000000;
 $text-inactive-color: #CBCBCB;
 $button-color: #C69F51;
 $button-inactive-color: #D8D8D8;
+$button-green: #005030;
 
 @font-face {
 	font-family: 'DINCondensed';
@@ -191,9 +192,9 @@ $button-inactive-color: #D8D8D8;
 		}
 		&__step.activeStep {
 			.circle {
-				border-color: #005030;
+				border-color: $button-green;
 				&:before {
-					background-color: #005030;
+					background-color: $button-green;
 				}
 			}
 			span {
@@ -202,14 +203,80 @@ $button-inactive-color: #D8D8D8;
 		}
 		&__step.completeStep {
 			.circle {
-				background-color: #005030;
-				border-color: #005030;
+				background-color: $button-green;
+				border-color: $button-green;
 				&:before {
-					background-color: #005030;
+					background-color: $button-green;
 				}
 			}
 			span {
 				color: $text-color;
+			}
+		}
+	}
+	.Products {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 90px;
+		padding-top: 20px;
+		&__product {
+			width: 25%;
+			img {
+				width: 100%;
+				background-color: #F4F5F5;
+			}
+			h4 {
+				font-family: 'DINCondensed';
+				font-size: 24px;
+				text-align: center;
+				text-transform: uppercase;
+				margin: 30px 0 12px;
+				color: $heading-color;
+			}
+			span {
+				display: block;
+				margin-bottom: 21px;
+				color: $text-color;
+				text-align: center;
+			}
+			button {
+				display: block;
+				height: 41px;
+				width: 158px;
+				background-color: #ffffff;
+				border: 2px solid $heading-color;
+				margin: 0 auto;
+				padding: 0;
+				position: relative;
+				transition: all 0.3s;
+				cursor: pointer;
+				span {
+					font-family: 'DINCondensed';
+					font-size: 24px;
+					color: $heading-color;
+					text-transform: uppercase;
+					margin: 0;
+					transition: color 0.3s;
+				}
+				.addedBtn {
+					display: none;
+				}
+				svg {
+					position: absolute;
+					right: 24px;
+					top: 50%;
+					transform: translateY(-50%);
+				}
+			}
+			button.addedProd {
+				border-color: $button-green;
+				background-color: $button-green;
+				span {
+					color: #ffffff;
+				}
+				.addBtn { display: none; }
+				.addedBtn { display: block; }
 			}
 		}
 	}

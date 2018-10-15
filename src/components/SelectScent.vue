@@ -69,8 +69,11 @@ import PageBar from './PageBar.vue'
 				} 
 				if (this.selectedScents.length < 2) {
 					this.selectedScents.push(scent);
+					this.$store.commit('setActiveScents', this.selectedScents);
+					this.$store.commit('setSelectedPreShave', '');
+					this.$store.commit('setSelectedShave', '');
+					this.$store.commit('setSelectedAfterShave', '');
 				}
-				this.$store.commit('setActiveScents', this.selectedScents);
 			}
 		}
 	}
