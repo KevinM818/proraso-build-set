@@ -86,6 +86,12 @@ import Swiper from 'swiper'
 					navigation: {
 						nextEl: '.swiper-button-prev',
 						prevEl: '.swiper-button-next'
+					},
+					breakpoints: {
+						1150: {
+							spaceBetween: 22,
+							slidesPerView: 3
+						}
 					}
 				});
 				if (this.$store.getters.getSelectedShave) {

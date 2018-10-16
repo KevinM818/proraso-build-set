@@ -1,5 +1,5 @@
 <template>
-  <div id="BuildASet">
+  <div id="BuildASet" class="BuildASet">
     <div v-if="getLoaded">
       <keep-alive>
         <component :is="activeComponent"></component>
