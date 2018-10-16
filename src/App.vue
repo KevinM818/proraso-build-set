@@ -16,13 +16,15 @@ import SelectScent from './components/SelectScent.vue'
 import SelectPreShave from './components/SelectPreShave.vue'
 import SelectShave from './components/SelectShave.vue'
 import SelectAfterShave from './components/SelectAfterShave.vue'
+import Summary from './components/Summary.vue'
 
 export default {
   components: {
     SelectScent,
     SelectPreShave,
     SelectShave,
-    SelectAfterShave
+    SelectAfterShave,
+    Summary
   },
   computed: {
     getLoaded() {

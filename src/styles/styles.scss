@@ -4,6 +4,7 @@ $text-inactive-color: #CBCBCB;
 $button-color: #C69F51;
 $button-inactive-color: #D8D8D8;
 $button-green: #005030;
+$bg-color: #F4F5F5;
 
 @font-face {
 	font-family: 'DINCondensed';
@@ -23,6 +24,7 @@ $button-green: #005030;
 		color: $heading-color;
 		margin: 0;
 	}
+	h4 { font-weight: normal; }
 	p,span {
 		font-family: 'AdobeItalic';
 		font-size: 18px;
@@ -123,7 +125,7 @@ $button-green: #005030;
 			}
 		}
 		&__scent.selected {
-			background-color: #F4F5F5;
+			background-color: $bg-color;
 			.removeIcon { display: block; }
 			.addIcon { display: none; }
 		}
@@ -221,7 +223,7 @@ $button-green: #005030;
 			width: 222px;
 			img {
 				width: 100%;
-				background-color: #F4F5F5;
+				background-color: $bg-color;
 			}
 			h4 {
 				font-family: 'DINCondensed';
@@ -318,5 +320,144 @@ $button-green: #005030;
 	.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
 		opacity: 1;
 		svg { opacity: 0; }
+	}
+	.summaryContainer {
+		h1 { margin-bottom: 50px; }
+	}
+	.giftQuestion {
+		text-align: center;
+		margin-bottom: 45px;
+		p {
+			font-family: 'DINCondensed';
+			font-size: 24px;
+			text-transform: uppercase;
+			margin-bottom: 24px;
+			color: $heading-color;
+		}
+		button {
+			display: inline-block;
+			height: 50px;
+			width: 225px;
+			color: #ffffff;
+			background-color: $button-color;
+			border: none;
+			font-family: 'DINCondensed';
+			font-size: 24px;
+			box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+			text-transform: uppercase;
+			margin: 0 10px;
+			cursor: pointer;
+		}
+	}
+	.giftMessage {
+		display: flex;
+		margin-bottom: 69px;
+		&__img {
+			height: 240px;
+			width: 247px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: $bg-color;
+		}
+		&__text {
+			flex: 1;
+			padding-left: 29px;
+			label {
+				font-family: 'AdobeItalic';
+				font-size: 18px;
+				display: block;
+				margin-left: 10px;
+				margin-bottom: 5px;
+				color: $heading-color;
+			}
+			input, textarea {
+				width: 100%;
+				border: 1px solid #E3E3E3;
+				padding: 0 10px;
+				box-sizing: border-box;
+			}
+			input {
+				height: 41px;
+				margin-bottom: 20px;
+			}
+			textarea {
+				height: 123px;
+				resize: none;
+			}
+		}
+	}
+	.Summary {
+		background-color: $bg-color;
+		display: flex;
+		padding: 39px 0;
+		margin-bottom: 69px;
+		&__products {
+			display: flex;
+			padding: 0 45px;
+			position: relative;
+			&:after {
+				content: "";
+				position: absolute;
+				height: 105px;
+				width:  1px;
+				background-color: #DBDBDB;
+				right: 0;
+				top: 50%;
+				transform:  translateY(-50%);
+			}
+		}
+		.summaryProd {
+			width: 175.71px;
+			margin: 0 19.65px;
+			text-align: center;
+			&:first-child { margin-left: 0; }
+			&:last-child { margin-right: 0; }
+			img {
+				width: 100%;
+				background-color: #FAFAFA;
+				box-shadow: 2px 2px 12px rgba(0,0,0,0.07);
+			}
+			h4 {
+				font-family: 'DINCondensed';
+				font-size: 24px;
+				color: $heading-color;
+				text-transform: uppercase;
+				margin: 20px 0 12px;
+			}
+			span {
+				color: $heading-color;
+			}
+		}
+		&__total {
+			width: 100%;
+			padding: 0 45px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			h5 {
+				display: inline-block;
+				font-family: 'DINCondensed';
+				font-size: 28px;
+				font-weight: normal;
+				text-transform: uppercase;
+				margin: 0 0 22px;
+			}
+			.totalText {
+				display: flex;
+				justify-content: space-between;
+			}
+			button {
+				font-family: 'DINCondensed';
+				color: #fff;
+				font-size: 24px;
+				background-color: $button-color;
+				border: none;
+				text-transform: uppercase;
+				height: 50px;
+				width: 100%;
+				box-shadow: 2px 2px 8px rgba(0,0,0,0.1); 
+			}
+		}
 	}
 }

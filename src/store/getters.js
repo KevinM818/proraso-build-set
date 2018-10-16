@@ -8,6 +8,9 @@ let getters = {
 	getLanguages(state) {
 		return state.languages;
 	},
+	getMainProduct(state) {
+		return state.mainProductId;
+	},
 	getActiveScents(state) {
 		return state.activeScents;
 	},

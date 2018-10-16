@@ -21,6 +21,7 @@ let actions = {
 			let steps = page.querySelectorAll('.stepInfo');
 			let scents = page.querySelectorAll('.scentInfo');
 			let summaryText = page.querySelectorAll('.summaryText');
+			let giftImage = page.querySelector('.giftImage');
 
 			steps.forEach(step => {
 				let stepHeading = step.querySelector('h3').textContent;
@@ -44,6 +45,7 @@ let actions = {
 			});
 
 			summaryText.forEach(text => languages.summary.push(text.textContent));
+			languages.summary.push(giftImage.getAttribute('src'));
 			
 			context.commit('setLanguages', languages);
 			context.commit('setScents', allScents);
