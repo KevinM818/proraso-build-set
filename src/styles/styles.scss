@@ -215,13 +215,10 @@ $button-green: #005030;
 		}
 	}
 	.Products {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
 		margin-bottom: 90px;
 		padding-top: 20px;
 		&__product {
-			width: 25%;
+			width: 222px;
 			img {
 				width: 100%;
 				background-color: #F4F5F5;
@@ -279,5 +276,47 @@ $button-green: #005030;
 				.addedBtn { display: block; }
 			}
 		}
+	}
+	.Products.noSlider {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.Products__product { 
+			margin: 0 22px; 
+			&:first-child { margin-left: 0; }
+			&:last-child { margin-right: 0; }
+		}
+	}
+	.swiper-container {
+		padding: 0 55px;
+	}
+	.swiper-button-next, .swiper-button-prev {
+		height: 100%;
+		top: 0;
+		background-color: #ffffff;
+		background-image: none;
+		display: flex;
+		align-items: center;
+		svg {
+			height: 268px;
+			position: absolute;
+			top: 40px;
+			transition: opacity 0.3s;
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+	.swiper-button-prev { 
+		left: 0; 
+		justify-content: flex-start;
+	}
+	.swiper-button-next { 
+		right: 0; 
+		justify-content: flex-end;
+	}
+	.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
+		opacity: 1;
+		svg { opacity: 0; }
 	}
 }

@@ -26,7 +26,7 @@ let mutations = {
 		}
 
 		let product = {
-			image: payload.images[0].src,
+			image: payload.images[1].src,
 			type: payload.product_type,
 			scent: payload.tags,
 			title: payload.title,
