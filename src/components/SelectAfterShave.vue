@@ -108,6 +108,8 @@ import Swiper from 'swiper'
 			}
 		},
 		activated() {
+			document.body.scrollTop = 0; // For Safari
+     		document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 			if (this.afterShaveProducts.length > 4 && window.innerWidth > 1000) {
 				this.mySwiper = new Swiper('.swiper-container', {
 					slidesPerView: 4,
