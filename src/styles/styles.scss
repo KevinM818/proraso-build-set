@@ -142,6 +142,7 @@ $bg-color: #F4F5F5;
 			background-color: $button-inactive-color;
 		}
 	}
+	.navButtonsMobile.summaryMobileButtons { padding: 0 10px; }
 	.Scents {
 		display: flex;
 		flex-flow: row wrap;
@@ -500,6 +501,13 @@ $bg-color: #F4F5F5;
 			span {
 				color: $heading-color;
 			}
+			.prodForm {
+				display: none; 
+				font-family: 'DINCondensed';
+				font-size: 16px;
+				text-transform: uppercase;
+				color: #BABABA;
+			}
 		}
 		&__total {
 			width: 100%;
@@ -667,6 +675,65 @@ $bg-color: #F4F5F5;
 					}
 					svg { right: 16px; }
 				}
+			}
+		}
+		.summaryContainer {
+			h1 { margin-bottom: 24px; }
+			.giftQuestion {
+				order: 2;
+				margin: 48.6px 0 0;
+				padding: 0 10px;
+				p {
+					font-size: 20px;
+					margin-bottom: 14px;
+				}
+				button {
+					height: 38px;
+					width: 154px;
+					font-size: 20px;
+					margin: 0 11px;
+				}
+			}
+		}
+		.Summary {
+			flex-flow: row wrap;
+			padding: 34px 23px 30px;
+			margin: 30px 0;
+			&__products {
+				width: 100%;
+				padding: 0;
+				margin-bottom: 30px;
+			}
+			.summaryProd {
+				width: 33.33%;
+				margin: 0 7.5px;
+				h4 {
+					font-size: 16px;
+					margin: 13px 0 4px;
+				}
+				.prodForm { display: block; }
+				.prodPrice { display: none; }
+			}
+			&__total {
+				padding: 0;
+				.totalText {
+					padding: 0 15px;
+					h5 { margin-bottom: 12px; }
+				}
+			}
+		}
+		.giftMessage {
+			margin: 36px 0 0;
+			flex-flow: row wrap;
+			&__img {
+				height: auto;
+				width: 100%;
+				background-color: #ffffff;
+				img { max-width: 134px; }
+			}
+			&__text {
+				padding: 0 22px;
+				margin-top: 21px;
 			}
 		}
 	}

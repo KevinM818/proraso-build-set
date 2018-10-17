@@ -23,17 +23,20 @@
 					<div class="summaryProd">
 						<img :src="getSelectedPreshave.image">
 						<h4>{{ getSelectedPreshave.title }}</h4>
-						<span>${{ getSelectedPreshave.price }}</span>
+						<span class="prodForm">{{ getSelectedPreshave.scent }}</span>
+						<span class="prodPrice">${{ getSelectedPreshave.price }}</span>
 					</div>
 					<div class="summaryProd">
 						<img :src="getSelectedShave.image">
 						<h4>{{ getSelectedShave.title }}</h4>
-						<span>${{ getSelectedShave.price }}</span>
+						<span class="prodForm">{{ getSelectedShave.scent }}</span>
+						<span class="prodPrice">${{ getSelectedShave.price }}</span>
 					</div>
 					<div class="summaryProd">
 						<img :src="getSelectedAfterShave.image">
 						<h4>{{ getSelectedAfterShave.title }}</h4>
-						<span>${{ getSelectedAfterShave.price }}</span>
+						<span class="prodForm">{{ getSelectedAfterShave.scent }}</span>
+						<span class="prodPrice">${{ getSelectedAfterShave.price }}</span>
 					</div>
 				</div>
 				<div class="Summary__total">
@@ -43,6 +46,20 @@
 					</div>
 					<button @click="addToCart()">Add to cart</button>
 				</div>
+			</div>
+			<div class="navButtonsMobile summaryMobileButtons">
+				<button class="prevMobile" @click="$store.commit('setComponent','SelectAfterShave')">
+					previous
+					<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M9 15L2 7.70085L9 1" stroke="#333333" stroke-width="2"/>
+					</svg>
+				</button>
+				<button class="nextMobile" disabled>
+					next
+					<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M1 15L8 7.70085L1 1" stroke="white" stroke-width="2"/>
+					</svg>
+				</button>
 			</div>
 		</div>
 		<div class="navigationButtons">
