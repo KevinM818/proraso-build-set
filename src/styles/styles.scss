@@ -41,6 +41,7 @@ $bg-color: #F4F5F5;
 	.mobileText__scent { display: none; }
 	.mobileScentContinue.buildBtn { display: none; }
 	.componentContainer {
+		padding-bottom: 90px;
 		h1, .headerText { text-align: center; }
 		.headerText {
 			width: 100%;
@@ -269,6 +270,41 @@ $bg-color: #F4F5F5;
 			}
 			span {
 				color: $text-color;
+			}
+		}
+	}
+	.pageBarMobile--wrap {
+		width: 100%;
+		height: 99px;
+		background-color: #294145;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.PageBar.PageBarMobile {
+		.PageBar__step {
+			background-color: #294145;
+			opacity: 0.5;
+			transition: opacity 0.3s;
+			.circle {
+				border-color: #ffffff;
+				&:before {
+					background-color: #ffffff;
+				}
+			}
+			svg { display: none; }
+			span {
+				color: #ffffff;
+			}
+		}
+		.PageBar__step.activeStep { opacity: 1; }
+		.PageBar__step.completeStep {
+			opacity: 1;
+			.circle {
+				background-color: #ffffff;
+			}
+			svg {
+				display: block;
 			}
 		}
 	}
@@ -551,6 +587,7 @@ $bg-color: #F4F5F5;
 		.componentContainer {
 			display: flex;
 			flex-direction: column;
+			padding-bottom: 45px;
 		}
 		.prodContainer {
 			box-sizing: border-box; 
@@ -744,17 +781,17 @@ body {
 	margin: 0;
 }
 
-// header { 
-// 	width: 100%; 
-// 	height: 92px;
-// 	background-color: green;
-// 	margin-bottom: 27px;
-// }
+header { 
+	width: 100%; 
+	height: 92px;
+	background-color: green;
+	margin-bottom: 27px;
+}
 
-// footer {
-// 	width: 100%;
-// 	height: 965px;
-// 	background-color: green;
-// 	margin-top: 45px;
-// }
+footer {
+	width: 100%;
+	height: 965px;
+	background-color: green;
+	margin-top: 45px;
+}
 

@@ -1,13 +1,18 @@
 <template>
   <div id="BuildASet" class="BuildASet">
+    <!-- <header></header> -->
     <div v-if="getLoaded">
       <keep-alive>
         <component :is="activeComponent"></component>
       </keep-alive>
+      <div class="pageBarMobile--wrap">
+        <PageBarMobile></PageBarMobile>
+      </div>
     </div>
     <div v-else>
       <h1>spinner</h1>
     </div>
+   <!--  <footer></footer> -->
   </div>
 </template>
 
@@ -17,6 +22,7 @@ import SelectPreShave from './components/SelectPreShave.vue'
 import SelectShave from './components/SelectShave.vue'
 import SelectAfterShave from './components/SelectAfterShave.vue'
 import Summary from './components/Summary.vue'
+import PageBarMobile from './components/PageBarMobile.vue'
 
 export default {
   components: {
@@ -24,7 +30,8 @@ export default {
     SelectPreShave,
     SelectShave,
     SelectAfterShave,
-    Summary
+    Summary,
+    PageBarMobile
   },
   computed: {
     getLoaded() {
@@ -36,13 +43,17 @@ export default {
   },
   methods: {
     pageScroll() {
-      let pageBarOffset = document.querySelector('.PageBar').offsetTop;
+      let pageBar = document.querySelector('.PageBar');
       let pagescrolled = window.scrollY;
-      console.log(pageBarOffset, pagescrolled);
+      if (pagescrolled > pageBar.clientHeight + pageBar.offsetTop) {
+        console.log('Scrolled past by');        
+      }
     }
   },
   created() {
-    window.addEventListener('scroll', this.pageScroll);
+    if (window.innerWidth <= 1000) {
+      window.addEventListener('scroll', this.pageScroll);
+    }
   }
 }
 </script>
