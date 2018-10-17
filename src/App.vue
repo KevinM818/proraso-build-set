@@ -33,6 +33,16 @@ export default {
     activeComponent() {
       return this.$store.getters.getActiveComponent;
     }
+  },
+  methods: {
+    pageScroll() {
+      let pageBarOffset = document.querySelector('.PageBar').offsetTop;
+      let pagescrolled = window.scrollY;
+      console.log(pageBarOffset, pagescrolled);
+    }
+  },
+  created() {
+    window.addEventListener('scroll', this.pageScroll);
   }
 }
 </script>

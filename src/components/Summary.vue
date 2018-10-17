@@ -81,6 +81,7 @@
 </template>
 
 <script type="text/javascript">
+import axios from 'axios'
 import PageBar from './PageBar.vue'
 import { mapGetters } from 'vuex'
 	export default {
@@ -114,7 +115,69 @@ import { mapGetters } from 'vuex'
 		},
 		methods: {
 			addToCart() {
-				console.log('addtocart');
+				let setNumber = new Date().valueOf();
+				let cartQueue = [];
+
+				function ajaxAdd(queue){
+					if (queue.length > 0){
+						let currentItem = queue.pop();
+						axios.post('/cart/add.js', currentItem)
+						.then(response => {
+							ajaxAdd(queue);
+						})
+						.catch(err => {
+							console.log(err);
+						});
+						} else {
+							window.location.href = '/cart';
+						}
+					}
+
+				if (this.isGift) {
+					cartQueue.push({
+						id: this.getMainProduct,
+						quantity: 1,
+						properties: {
+							'Set Number': setNumber,
+							'Pre-Shave': this.getSelectedPreshave.title,
+							'Shave': this.getSelectedShave.title,
+							'Aftershave': this.getSelectedAfterShave.title,
+							'Gift Recipient': this.giftName,
+							'Gift Message': this.giftMessage
+						}
+					});
+				} else {
+					cartQueue.push({
+						id: this.getMainProduct,
+						quantity: 1,
+						properties: {
+							'Set Number': setNumber,
+							'Pre-Shave': this.getSelectedPreshave.title,
+							'Shave': this.getSelectedShave.title,
+							'Aftershave': this.getSelectedAfterShave.title
+						}
+					});
+				}
+
+				cartQueue.push({
+					id: this.getSelectedPreshave.id, 
+					quantity: 1, 
+					properties: { 'Set Number': setNumber }
+				});
+
+				cartQueue.push({
+					id: this.getSelectedShave.id, 
+					quantity: 1, 
+					properties: { 'Set Number': setNumber }
+				});
+
+				cartQueue.push({
+					id: this.getSelectedAfterShave.id, 
+					quantity: 1, 
+					properties: { 'Set Number': setNumber }
+				});
+				console.log(cartQueue);
+				ajaxAdd(cartQueue);
 			}
 		},
 		activated() {
