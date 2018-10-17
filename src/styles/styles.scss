@@ -273,13 +273,32 @@ $bg-color: #F4F5F5;
 			}
 		}
 	}
-	.pageBarMobile--wrap {
+	.pageBarVue {
+		display: none;
 		width: 100%;
 		height: 99px;
+	}
+	.pageBarMobile--wrap {
+		width: 100%;
+		height: 0;
+		overflow: hidden;
+		transition: height 0.3s;
 		background-color: #294145;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 1;
+	}
+	.pageBarMobile--wrap.fixedPageBar {
+		height: 99px;
+	}
+	.pageBarMobile--wrap.staticPageBar {
+		position: static;
+		height: 99px;
 	}
 	.PageBar.PageBarMobile {
 		.PageBar__step {
@@ -633,6 +652,9 @@ $bg-color: #F4F5F5;
 				}
 			}
 		}
+		.pageBarVue {
+			display: block;
+		}
 		.Scents {
 			margin-bottom: 40px;
 			&__scent {
@@ -792,6 +814,5 @@ footer {
 	width: 100%;
 	height: 965px;
 	background-color: green;
-	margin-top: 45px;
 }
 

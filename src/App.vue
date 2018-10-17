@@ -1,18 +1,20 @@
 <template>
   <div id="BuildASet" class="BuildASet">
-    <!-- <header></header> -->
+    <header></header>
     <div v-if="getLoaded">
       <keep-alive>
         <component :is="activeComponent"></component>
       </keep-alive>
-      <div class="pageBarMobile--wrap">
-        <PageBarMobile></PageBarMobile>
+      <div class="pageBarVue">
+        <div class="pageBarMobile--wrap">
+          <PageBarMobile></PageBarMobile>
+        </div>
       </div>
     </div>
     <div v-else>
       <h1>spinner</h1>
     </div>
-   <!--  <footer></footer> -->
+    <footer></footer>
   </div>
 </template>
 
@@ -42,12 +44,38 @@ export default {
     }
   },
   methods: {
+    isAnyPartOfElementInViewport(el) {
+      let rect = el.getBoundingClientRect();
+      let windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+      let windowWidth = (window.innerWidth || document.documentElement.clientWidth);
+      let vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0);
+      let horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0);
+      return (vertInView && horInView);
+    },
+    isElementInViewport(el) {
+      var rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document. documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document. documentElement.clientWidth)
+      );
+    },
     pageScroll() {
       let pageBar = document.querySelector('.PageBar');
-      let pagescrolled = window.scrollY;
-      if (pagescrolled > pageBar.clientHeight + pageBar.offsetTop) {
-        console.log('Scrolled past by');        
-      }
+      let pageBarVue = document.querySelector('.pageBarVue');
+      let pageBarMobile = document.querySelector('.pageBarMobile--wrap');
+
+      if (this.isElementInViewport(pageBarVue)) {
+        pageBarMobile.classList.remove('fixedPageBar');
+        pageBarMobile.classList.add('staticPageBar');
+      } else if (!this.isAnyPartOfElementInViewport(pageBar)) {
+        pageBarMobile.classList.remove('staticPageBar');
+        pageBarMobile.classList.add('fixedPageBar');
+      } else {
+        pageBarMobile.classList.remove('staticPageBar');
+        pageBarMobile.classList.remove('fixedPageBar');
+      }      
     }
   },
   created() {
