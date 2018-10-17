@@ -2,12 +2,27 @@
 	<div class="componentContainer">
 		<h1>{{ headerText.heading }}</h1>
 		<p class="headerText">{{ headerText.text }}</p>
-		<div class="componentInnerContainer" :class="preShaveProducts.length > 4 ? 'swiper-container' : '' ">
+		<div class="componentInnerContainer prodContainer" :class="preShaveProducts.length > 4 ? 'swiper-container' : '' ">
+			<div class="navButtonsMobile">
+				<button class="prevMobile" @click="$store.commit('setComponent','SelectScent')">
+					previous
+					<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M9 15L2 7.70085L9 1" stroke="#333333" stroke-width="2"/>
+					</svg>
+				</button>
+				<button class="nextMobile"  @click="$store.commit('setComponent','SelectShave')" :disabled="$store.getters.getSelectedPreshave === '' ">
+					next
+					<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M1 15L8 7.70085L1 1" stroke="white" stroke-width="2"/>
+					</svg>
+				</button>
+			</div>
 			<div class="Products" :class="preShaveProducts.length > 4 ? 'swiper-wrapper' : 'noSlider' ">
 				<div class="Products__product" v-for="product in preShaveProducts" :class="preShaveProducts.length > 4 ? 'swiper-slide' : '' ">
 					<img :src="product.image">
 					<h4>{{ product.title }}</h4>
-					<span>${{ product.price }}</span>
+					<span class="prodForm">{{ product.scent }} formula</span>
+					<span class="prodPrice">${{ product.price }}</span>
 					<button @click="selectPreShave(product)" :class="$store.getters.getSelectedPreshave === product ? 'addedProd' : '' ">
 						<span class="addBtn">Add</span>
 						<span class="addedBtn">Added</span>
@@ -27,6 +42,20 @@
 				<path d="M2 2L12 11.5L2 21" stroke="black" stroke-width="3"/>
 				</svg>
     		</div>
+    		<div class="navButtonsMobile">
+				<button class="prevMobile" @click="$store.commit('setComponent','SelectScent')">
+					previous
+					<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M9 15L2 7.70085L9 1" stroke="#333333" stroke-width="2"/>
+					</svg>
+				</button>
+				<button class="nextMobile"  @click="$store.commit('setComponent','SelectShave')" :disabled="$store.getters.getSelectedPreshave === '' ">
+					next
+					<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M1 15L8 7.70085L1 1" stroke="white" stroke-width="2"/>
+					</svg>
+				</button>
+			</div>
 		</div>
 		<div class="navigationButtons">
 			<button class="buttonPrev buildBtn" @click="$store.commit('setComponent','SelectScent')">

@@ -39,7 +39,6 @@
 				</svg>
 			</button>
 			<PageBar></PageBar>
-			<p class="mobileText__scent">Select two scents to continue</p>
 			<button class="buttonNext buildBtn" @click="$store.commit('setComponent','SelectPreShave')" :disabled="selectedScents.length < 2">
 				next
 				<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,6 +46,7 @@
 				</svg>
 			</button>
 		</div>
+		<p class="mobileText__scent">Select two scents to continue</p>
 		<button class="mobileScentContinue buildBtn"  @click="$store.commit('setComponent','SelectPreShave')" :disabled="selectedScents.length < 2">
 			Continue
 			<svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
