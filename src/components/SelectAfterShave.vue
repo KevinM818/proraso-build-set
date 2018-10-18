@@ -42,7 +42,7 @@
 				<path d="M2 2L12 11.5L2 21" stroke="black" stroke-width="3"/>
 				</svg>
     		</div>
-    		<div class="navButtonsMobile">
+    		<div class="navButtonsMobile btnsBottom">
 				<button class="prevMobile" @click="$store.commit('setComponent','SelectShave')">
 					previous
 					<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">

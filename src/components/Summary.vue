@@ -1,11 +1,11 @@
 <template>
 	<div class="componentContainer summaryContainer">
 		<h1>{{ summaryText[0] }}</h1>
-			<div class="giftQuestion" v-if="askGift">
+			<!-- <div class="giftQuestion" v-if="askGift">
 				<p>{{ summaryText[1] }}</p>
 				<button @click="askGift = false; isGift = true">Yes</button>
 				<button @click="askGift = false">No</button>
-			</div>
+			</div> -->
 		<div class="componentInnerContainer">
 			<transition name="fade">
 				<div class="giftMessage" v-if="isGift">
@@ -42,21 +42,60 @@
 					</div>
 				</div>
 				<div class="Summary__total">
+					<div class="giftQuestion" v-if="askGift">
+						<p>is this item a gift?</p>
+						<button @click="askGift = false; isGift = true" class="btnIsGift">
+							<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 8.79443H26V15.0076H1V8.79443Z" stroke="white"/>
+							<path d="M2.44231 15.9634H24.5577V26H2.44231V15.9634Z" stroke="white"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M13.7404 8.79437C13.6601 7.28091 13.2596 3.96724 12.2981 2.82022C11.0962 1.38642 9.89423 0.66952 8.93269 1.14745C8.16341 1.52979 6.84928 2.74055 6.28846 3.29815C6.04808 3.61678 5.75957 4.54076 6.52885 5.68781C7.29812 6.83486 11.1762 8.23678 13.0192 8.79437H13.7404ZM7.97115 4.49298C7.77889 3.91946 8.0512 3.45745 8.21154 3.29815C8.37187 3.13885 8.78856 2.91581 9.17308 3.29815C9.5576 3.68049 11.4166 6.64368 12.2981 8.07747C10.9358 7.12161 8.16341 5.0665 7.97115 4.49298Z" stroke="white"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M13.5 8.79437C13.5803 7.28091 13.9808 3.96724 14.9423 2.82022C16.1442 1.38642 17.3462 0.66952 18.3077 1.14745C19.077 1.52979 20.3911 2.74055 20.9519 3.29815C21.1923 3.61678 21.4808 4.54076 20.7115 5.68781C19.9423 6.83486 16.0642 8.23678 14.2212 8.79437H13.5ZM18.7885 4.49298C18.9807 3.91946 18.7084 3.45745 18.5481 3.29815C18.3877 3.13885 17.9711 2.91581 17.5865 3.29815C17.202 3.68049 15.343 6.64368 14.4615 8.07747C15.8238 7.12161 18.5962 5.0665 18.7885 4.49298Z" stroke="white"/>
+							</svg>
+							yes
+						</button>
+						<button  @click="askGift = false" class="btnNotGift">no, its for me</button>
+					</div>
+					<div class="summarylist" v-else>
+						<div class="listItem">
+							<h4>{{ getSelectedPreshave.title }}</h4>
+							<span>${{  getSelectedPreshave.price }}</span>
+						</div>
+						<div class="listItem">
+							<h4>{{ getSelectedShave.title }}</h4>
+							<span>${{  getSelectedShave.price }}</span>
+						</div>
+						<div class="listItem">
+							<h4>{{ getSelectedAfterShave.title }}</h4>
+							<span>${{  getSelectedAfterShave.price }}</span>
+						</div>
+					</div>
 					<div class="totalText">
 						<h5>Total:</h5>
 						<h5>${{ calculatePrice }}</h5>
 					</div>
-					<button @click="addToCart()">Add to cart</button>
 				</div>
 			</div>
-			<div class="navButtonsMobile summaryMobileButtons">
+			<p class="mobileAskText" v-if="askGift">is this item a gift?</p>
+			<div class="navButtonsMobile summaryMobileButtons mobileConfirmButtons" v-if="askGift">
+				<button @click="askGift = false; isGift = true" class="btnIsGift">
+							<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 8.79443H26V15.0076H1V8.79443Z" stroke="white"/>
+							<path d="M2.44231 15.9634H24.5577V26H2.44231V15.9634Z" stroke="white"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M13.7404 8.79437C13.6601 7.28091 13.2596 3.96724 12.2981 2.82022C11.0962 1.38642 9.89423 0.66952 8.93269 1.14745C8.16341 1.52979 6.84928 2.74055 6.28846 3.29815C6.04808 3.61678 5.75957 4.54076 6.52885 5.68781C7.29812 6.83486 11.1762 8.23678 13.0192 8.79437H13.7404ZM7.97115 4.49298C7.77889 3.91946 8.0512 3.45745 8.21154 3.29815C8.37187 3.13885 8.78856 2.91581 9.17308 3.29815C9.5576 3.68049 11.4166 6.64368 12.2981 8.07747C10.9358 7.12161 8.16341 5.0665 7.97115 4.49298Z" stroke="white"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M13.5 8.79437C13.5803 7.28091 13.9808 3.96724 14.9423 2.82022C16.1442 1.38642 17.3462 0.66952 18.3077 1.14745C19.077 1.52979 20.3911 2.74055 20.9519 3.29815C21.1923 3.61678 21.4808 4.54076 20.7115 5.68781C19.9423 6.83486 16.0642 8.23678 14.2212 8.79437H13.5ZM18.7885 4.49298C18.9807 3.91946 18.7084 3.45745 18.5481 3.29815C18.3877 3.13885 17.9711 2.91581 17.5865 3.29815C17.202 3.68049 15.343 6.64368 14.4615 8.07747C15.8238 7.12161 18.5962 5.0665 18.7885 4.49298Z" stroke="white"/>
+							</svg>
+							yes
+						</button>
+						<button  @click="askGift = false" class="btnNotGift">no, its for me</button>
+			</div>
+			<div class="navButtonsMobile summaryMobileButtons" v-else>
 				<button class="prevMobile" @click="$store.commit('setComponent','SelectAfterShave')">
 					previous
 					<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M9 15L2 7.70085L9 1" stroke="#333333" stroke-width="2"/>
 					</svg>
 				</button>
-				<button class="nextMobile" disabled>
+				<button class="nextMobile" @click="addToCart()" :disabled="disableAddToCart">
 					next
 					<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M1 15L8 7.70085L1 1" stroke="white" stroke-width="2"/>
@@ -72,7 +111,7 @@
 				</svg>
 			</button>
 			<PageBar></PageBar>
-			<button class="buttonNext buildBtn" disabled>
+			<button class="buttonNext buildBtn" @click="addToCart()" :disabled="disableAddToCart">
 				next
 				<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M1 1L9 10.0667L1 18" stroke="white" stroke-width="2"/>
@@ -113,6 +152,18 @@ import { mapGetters } from 'vuex'
 				let shavePrice = parseFloat(this.getSelectedShave.price);
 				let AfterShavePrice = parseFloat(this.getSelectedAfterShave.price);
 				return (preShavePrice + shavePrice + AfterShavePrice).toFixed(2);
+			},
+			disableAddToCart() {
+				if (!this.askGift) {
+					if (this.isGift) {
+						if (this.giftName && this.giftMessage) {
+							return false
+						}
+						return true;
+					}
+					return false;
+				}
+				return true;
 			}
 		},
 		methods: {
@@ -178,7 +229,6 @@ import { mapGetters } from 'vuex'
 					quantity: 1, 
 					properties: { 'Set Number': setNumber }
 				});
-				console.log(cartQueue);
 				ajaxAdd(cartQueue);
 			}
 		},
