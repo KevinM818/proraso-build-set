@@ -2,7 +2,7 @@
 	<div class="componentContainer">
 		<h1>{{ headerText.heading }}</h1>
 		<p class="headerText">{{ headerText.text }}</p>
-		<div class="componentInnerContainer prodContainer" :class="preShaveProducts.length > 4 ? 'swiper-container' : '' ">
+		<div class="componentInnerContainer prodContainer" :class="preShaveProducts.length > 4 ? 'swiper-container' : '' " :style="{ opacity: opacity }">
 			<div class="navButtonsMobile">
 				<button class="prevMobile" @click="$store.commit('setComponent','SelectScent')">
 					previous
@@ -85,7 +85,8 @@ import Swiper from 'swiper'
 		data() {
 			return {
 				mySwiper: '',
-				activeSlide: ''
+				activeSlide: '',
+				opacity: 0
 			};
 		},
 		computed: {
@@ -110,6 +111,7 @@ import Swiper from 'swiper'
 		activated() {
 			document.body.scrollTop = 0; // For Safari
      		document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+     		this.opacity = 1;
 			if (this.preShaveProducts.length > 4 && window.innerWidth > 1000) {
 				this.mySwiper = new Swiper('.swiper-container', {
 					slidesPerView: 4,

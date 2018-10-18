@@ -1,23 +1,25 @@
 <template>
 	<div class="componentContainer summaryContainer">
 		<h1>{{ summaryText[0] }}</h1>
-		<div class="giftQuestion" v-if="askGift">
-			<p>{{ summaryText[1] }}</p>
-			<button @click="askGift = false; isGift = true">Yes</button>
-			<button @click="askGift = false">No</button>
-		</div>
-		<div class="componentInnerContainer">
-			<div class="giftMessage" v-if="isGift">
-				<div class="giftMessage__img">
-					<img :src="summaryText[4]">
-				</div>
-				<div class="giftMessage__text">
-					<label>{{ summaryText[2] }}</label>
-					<input type="text" v-model="giftName">
-					<label>{{ summaryText[3] }}</label>
-					<textarea  v-model="giftMessage"></textarea>
-				</div>
+			<div class="giftQuestion" v-if="askGift">
+				<p>{{ summaryText[1] }}</p>
+				<button @click="askGift = false; isGift = true">Yes</button>
+				<button @click="askGift = false">No</button>
 			</div>
+		<div class="componentInnerContainer">
+			<transition name="fade">
+				<div class="giftMessage" v-if="isGift">
+					<div class="giftMessage__img">
+						<img :src="summaryText[4]">
+					</div>
+					<div class="giftMessage__text">
+						<label>{{ summaryText[2] }}</label>
+						<input type="text" v-model="giftName">
+						<label>{{ summaryText[3] }}</label>
+						<textarea  v-model="giftMessage"></textarea>
+					</div>
+				</div>
+			</transition>
 			<div class="Summary">
 				<div class="Summary__products">
 					<div class="summaryProd">

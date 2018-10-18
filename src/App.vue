@@ -1,9 +1,8 @@
 <template>
   <div id="BuildASet" class="BuildASet">
-    <header></header>
     <div v-if="getLoaded">
       <keep-alive>
-        <component :is="activeComponent"></component>
+          <component :is="activeComponent"></component>       
       </keep-alive>
       <div class="pageBarVue">
         <div class="pageBarMobile--wrap">
@@ -11,10 +10,9 @@
         </div>
       </div>
     </div>
-    <div v-else>
-      <h1>spinner</h1>
+    <div v-else class="spinner">
+      <div class="loader">Loading...</div>
     </div>
-    <footer></footer>
   </div>
 </template>
 
@@ -65,8 +63,8 @@ export default {
       let pageBar = document.querySelector('.PageBar');
       let pageBarVue = document.querySelector('.pageBarVue');
       let pageBarMobile = document.querySelector('.pageBarMobile--wrap');
-
-      if (this.isElementInViewport(pageBarVue)) {
+      let scrolledAmount = window.scrollY;
+      if (this.isAnyPartOfElementInViewport(pageBarVue) || scrolledAmount + 99 > pageBarVue.offsetTop) {
         pageBarMobile.classList.remove('fixedPageBar');
         pageBarMobile.classList.add('staticPageBar');
       } else if (!this.isAnyPartOfElementInViewport(pageBar)) {
