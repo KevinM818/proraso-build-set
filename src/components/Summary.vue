@@ -192,6 +192,7 @@ import { mapGetters } from 'vuex'
 							'Pre-Shave': this.getSelectedPreshave.title,
 							'Shave': this.getSelectedShave.title,
 							'Aftershave': this.getSelectedAfterShave.title,
+							'Total Set Price': this.calculatePrice,
 							'Gift Recipient': this.giftName,
 							'Gift Message': this.giftMessage
 						}
@@ -204,7 +205,8 @@ import { mapGetters } from 'vuex'
 							'Set Number': setNumber,
 							'Pre-Shave': this.getSelectedPreshave.title,
 							'Shave': this.getSelectedShave.title,
-							'Aftershave': this.getSelectedAfterShave.title
+							'Aftershave': this.getSelectedAfterShave.title,
+							'Total Set Price': this.calculatePrice
 						}
 					});
 				}
@@ -226,6 +228,7 @@ import { mapGetters } from 'vuex'
 					quantity: 1, 
 					properties: { 'Set Number': setNumber }
 				});
+				console.log(cartQueue);
 				ajaxAdd(cartQueue);
 			}
 		},
