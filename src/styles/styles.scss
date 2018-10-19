@@ -38,6 +38,14 @@ $bg-color: #F4F5F5;
 		color: $text-color;
 		margin: 0;
 	}
+	.noselect {
+	  -webkit-touch-callout: none; 
+	    -webkit-user-select: none; 
+	     -khtml-user-select: none; 
+	       -moz-user-select: none; 
+	        -ms-user-select: none; 
+	            user-select: none; 
+	}
 	.mobileText__scent { display: none; }
 	.mobileScentContinue.buildBtn { display: none; }
 	.componentContainer {
@@ -172,7 +180,8 @@ $bg-color: #F4F5F5;
 			svg {
 				position: relative;
 				transform: none;
-				padding-right: 15px;
+				padding-right: 10px;
+				top: -1px;
 			}
 		}
 		.btnNotGift {
@@ -575,7 +584,7 @@ $bg-color: #F4F5F5;
 			input, textarea {
 				width: 100%;
 				border: 1px solid #E3E3E3;
-				padding: 0 10px;
+				padding: 5px 10px;
 				box-sizing: border-box;
 			}
 			input {
@@ -698,9 +707,14 @@ $bg-color: #F4F5F5;
 			display: block;
 			text-align: center;
 			margin: 34px 0 24px;
-			font-size: 15px;
+			font-size: 18px;
 			color: #919191;
+		}
+		.mobileOptions {
 			order: 1;
+		}
+		.mobileScentContinueTop {
+			margin: 15px 0;
 		}
 		.navigationButtons {
 			flex-direction: column;

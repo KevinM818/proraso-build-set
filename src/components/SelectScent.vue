@@ -25,8 +25,8 @@
 					</div>
 					<div class="imgIcon"><img :src="scent.imgSrc"></div>
 					<div class="scentInfo">
-						<h3>{{ scent.heading }}</h3>
-						<p>{{ scent.text }}</p>
+						<h3 class="noselect">{{ scent.heading }}</h3>
+						<p class="noselect">{{ scent.text }}</p>
 					</div>
 				</div>
 			</div>
@@ -46,7 +46,19 @@
 				</svg>
 			</button>
 		</div>
-		<p class="mobileText__scent">Select two scents to continue</p>
+		<div class="mobileOptions">
+			
+				<div class="mobileScentContinueTop" v-if="selectedScents.length == 2">
+					<button class="mobileScentContinue buildBtn" @click="$store.commit('setComponent','SelectPreShave')">
+						Continue
+						<svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M1 16L8 8.17949L1 1" stroke="white" stroke-width="2"/>
+						</svg>
+					</button>
+				</div>
+				<p class="mobileText__scent" v-else>Select two scents to continue</p>
+		
+		</div>
 		<button class="mobileScentContinue buildBtn"  @click="$store.commit('setComponent','SelectPreShave')" :disabled="selectedScents.length < 2">
 			Continue
 			<svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
