@@ -188,13 +188,13 @@ import { mapGetters } from 'vuex'
 						id: this.getMainProduct,
 						quantity: 1,
 						properties: {
-							'Set Number': setNumber,
+							'Set_Number': setNumber,
 							'Pre-Shave': this.getSelectedPreshave.title,
 							'Shave': this.getSelectedShave.title,
 							'Aftershave': this.getSelectedAfterShave.title,
-							'Total Set Price': this.calculatePrice,
-							'Gift Recipient': this.giftName,
-							'Gift Message': this.giftMessage
+							'Total_Set_Price': this.calculatePrice,
+							'Gift_Recipient': this.giftName,
+							'Gift_Message': this.giftMessage
 						}
 					});
 				} else {
@@ -202,11 +202,11 @@ import { mapGetters } from 'vuex'
 						id: this.getMainProduct,
 						quantity: 1,
 						properties: {
-							'Set Number': setNumber,
+							'Set_Number': setNumber,
 							'Pre-Shave': this.getSelectedPreshave.title,
 							'Shave': this.getSelectedShave.title,
 							'Aftershave': this.getSelectedAfterShave.title,
-							'Total Set Price': this.calculatePrice
+							'Total_Set_Price': this.calculatePrice
 						}
 					});
 				}
@@ -214,19 +214,19 @@ import { mapGetters } from 'vuex'
 				cartQueue.push({
 					id: this.getSelectedPreshave.id, 
 					quantity: 1, 
-					properties: { 'Set Number': setNumber }
+					properties: { 'Set_Number': setNumber }
 				});
 
 				cartQueue.push({
 					id: this.getSelectedShave.id, 
 					quantity: 1, 
-					properties: { 'Set Number': setNumber }
+					properties: { 'Set_Number': setNumber }
 				});
 
 				cartQueue.push({
 					id: this.getSelectedAfterShave.id, 
 					quantity: 1, 
-					properties: { 'Set Number': setNumber }
+					properties: { 'Set_Number': setNumber }
 				});
 				console.log(cartQueue);
 				ajaxAdd(cartQueue);
